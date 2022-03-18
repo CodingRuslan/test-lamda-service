@@ -1,0 +1,22 @@
+{
+  "name": "test-lamda-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingRuslan/test-lamda-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodingRuslan/test-lamda-service/issues"
+  },
+  "homepage": "https://github.com/CodingRuslan/test-lamda-service#readme",
+  "devDependencies": {
+    "serverless-offline": "^8.5.0"
+  }
+}
