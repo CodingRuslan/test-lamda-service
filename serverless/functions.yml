@@ -1,0 +1,18 @@
+hello:
+  handler: handler.hello
+  events:
+    - http:
+        path: /hello/get
+        method: get
+createUser:
+  handler: functions/create-user.create
+  events:
+    - http:
+        path: users
+        method: POST
+getUsers:
+  handler: functions/user-list.list
+  events:
+    - http:
+        path: users
+        method: GET
