@@ -5,13 +5,43 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    TABLE_NAME:
+      Ref: usersTable
+  iamRoleStatements: ${file(./serverless/role.yml):iamRoleStatements}
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: /hello/get
-          method: get
+  - ${file(./serverless/functions.yml)}
+
+
+resources: # CloudFormation template syntax from here on.
+  - ${file(./serverless/tables.yml)}
+
+
+custom:
+  dynamodb:
+    # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+
+  seed:
+    test:
+      sources:
+        - table: users
+          rawsources: [./fake-test-userfake-test-users.json]
+
+
 plugins:
   - serverless-offline
+  - serverless-dynamodb-local
+

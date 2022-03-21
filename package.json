@@ -18,5 +18,8 @@
   "homepage": "https://github.com/CodingRuslan/test-lamda-service#readme",
   "devDependencies": {
     "serverless-offline": "^8.5.0"
+  },
+  "dependencies": {
+    "serverless-dynamodb-local": "^0.2.40"
   }
 }
